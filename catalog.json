@@ -1,0 +1,101 @@
+[
+  {
+    "id": "el1",
+    "name": "Памятник Петру І",
+    "year": 1903,
+    "sculptureName": "Марк Антокольский",
+    "place": "Комсомольский бульвар",
+    "img": "https://ibb.co/g7WGWHg"
+  },
+
+  {
+    "id": "el2",
+    "name": "Памятник императору Александру І",
+    "year": 1998,
+    "sculptureName": "И. П. Мартос",
+    "place": "Банковская площадь",
+    "img": "https://ibb.co/VLF0d0F"
+  },
+
+  {
+    "id": "el3",
+    "name": "Памятник Антону Чехову",
+    "year": 1960,
+    "sculptureName": "И. М. Рукавишников",
+    "place": "Красная площадь",
+    "img": "https://ibb.co/TYbFRMm"
+  },
+
+  {
+    "id": "el4",
+    "name": "Клятва юности",
+    "year": 1973,
+    "sculptureName": "В. П. и В. М. Грачёвы",
+    "place": "Спартаковский переулок",
+    "img": "https://ibb.co/bKQGpwQ"
+  },
+  {
+    "id": "el5",
+    "name": "Памятник Фаине Раневской",
+    "year": 2008,
+    "sculptureName": "Давид Бегалов",
+    "place": "Ул. Фрунзе, 10",
+    "img": "https://ibb.co/vPSC7h0"
+  },
+  {
+    "id": "el6",
+    "name": "Памятник Королёву и Гагарину",
+    "year": 1979,
+    "sculptureName": "Олег Комов",
+    "place": "Ул. Чехова, 22",
+    "img": "https://ibb.co/VYyzpMQ"
+  },
+  {
+    "id": "el7",
+    "name": "Памятник Ленину",
+    "year": 1970,
+    "sculptureName": "Н. В. Томский",
+    "place": "Октябрьская площадь",
+    "img": "https://ibb.co/Vvd7qdz"
+  },
+  {
+    "id": "el8",
+    "name": "Памятник Максиму Горькому",
+    "year": 1950,
+    "sculptureName": "Валентина Руссо",
+    "place": "Парк Горького",
+    "img": "https://ibb.co/0DNgRdY"
+  },
+  {
+    "id": "el9",
+    "name": "Памятник Ф. Э. Дзержинскому",
+    "year": 1987,
+    "sculptureName": "А. Д. Щербаков",
+    "place": "ул. Дзержинского, 191",
+    "img": "https://ibb.co/K5n4wRf"
+  },
+  {
+    "id": "el10",
+    "name": "Египетская пирамида",
+    "year": 2008,
+    "sculptureName": "Дмитрий Лындин",
+    "place": "Парк Горького",
+    "img": "https://ibb.co/x7pG6JZ"
+  },
+  {
+    "id": "el11",
+    "name": "Роман с контрабасом",
+    "year": 2008,
+    "sculptureName": "Дмитрий Лындин",
+    "place": "Пушкинская набережная",
+    "img": "https://ibb.co/1L29VVj"
+  },
+  {
+    "id": "el12",
+    "name": "Человек в футляре",
+    "year": 2010,
+    "sculptureName": "Давид Бегалов",
+    "place": "ул. Октябрьская, 9",
+    "img": "https://ibb.co/PjWQ2Rv"
+  }
+]
