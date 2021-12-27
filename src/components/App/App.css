@@ -49,3 +49,22 @@ body {
 ::-webkit-scrollbar-track {
   background-color: var(--color-dark);
 }
+
+:global(.btn) {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+}
+
+:global(.img-contain) {
+  display: block;
+  object-fit: contain;
+  object-position: center;
+}
+
+:global(.img-cover) {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
