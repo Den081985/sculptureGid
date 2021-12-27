@@ -1,1 +1,5 @@
-//http://myjson.dit.upm.es/api/bins/3och ссылка на полный каталог
+import App from "./App/App";
+
+(async () => {
+  await App.render();
+})();

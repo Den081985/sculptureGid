@@ -2,7 +2,6 @@
   "name": "sculpturegid",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "parcel public/index.html --open",
     "build": "parcel build public/index.html"
@@ -18,6 +17,7 @@
   },
   "homepage": "https://github.com/Den081985/sculptureGid#readme",
   "devDependencies": {
+    "autoprefixer": "^10.4.0",
     "parcel": "^2.0.1",
     "postcss": "^8.4.5",
     "postcss-modules": "^4.3.0"

@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@1,700&display=swap");
+
+.sculpture__container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sculpture__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  background-color: var(--color-medium);
+  margin: var(--spacing-large);
+  /* transition-property: width; */
+  transition-duration: 0.5s;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}
+
+.sculpture__item:hover {
+  /* transition-property: width; */
+  /* transition-duration: 0.5s; */
+  /* width: 260px; */
+  transform: rotate(-3deg) scale(0.95);
+  filter: contrast(150%);
+}
+
+.sculpture__name {
+  display: flex;
+  text-align: center;
+  margin: auto;
+  padding: var(--spacing-small) var(--spacing-medium);
+  font-size: 18px;
+  font-family: "PT Serif", serif;
+  color: var(--color-black);
+}
+
+.sculpture__img {
+  width: 100%;
+}
