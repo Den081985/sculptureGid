@@ -1,0 +1,60 @@
+/* CSS свойство backdrop-filter позволяет вам использовать визуальные эффекты - такие как размытие или смещение цвета фона - за элементом. */
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,700&display=swap");
+
+.description__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+}
+
+.description__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  max-width: 1200px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: var(--spacing-large);
+  overflow: auto;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+}
+
+.description__imgContainer {
+  display: flex;
+}
+
+.description__img {
+  display: block;
+  max-width: 380px;
+}
+
+.description__spanContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: auto;
+}
+
+.description__span {
+  margin: var(--spacing-large);
+  font-size: 20px;
+  color: var(--color-black);
+  font-family: "Source Serif Pro", serif;
+}
+
+.description__btn {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: var(--spacing-large);
+  right: var(--spacing-large);
+}
