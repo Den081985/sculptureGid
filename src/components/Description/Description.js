@@ -1,30 +1,34 @@
-/*handleSetLocationStorage(element, id) {
-    const { pushProducts, products } = localStorageUtil.putProducts(id);
+import { ROOT_MODAL } from "../../../constants/root";
 
-    if (pushProducts) {
-      element.classList.add(this.classNameActive);
-      element.innerHTML = this.labelRemove;
-    } else {
-      element.classList.remove(this.classNameActive);
-      element.innerHTML = this.labelAdd;
-    }
-    headerPage.render(products.length);
-  }*/
+import * as classes from "./Description.css";
 
-import { URL } from "../../../constants/url";
-
-import { getDataApi } from "../../../utils/getDataApi";
+import closeWhite from "../Images/icons8-удалить.svg";
 
 class Description {
-
-    describe(element, id) {
-        if(id) {
-            element.innerHTML = 
-        }
-
-    }
-
-  async render() {
-    const data = await getDataApi.getData(URL);
+  render(place, year, sculptureName, img) {
+    const htmlContent = `
+      <div class = "${classes.description__wrapper}">
+        <div class = "${classes.description__container}">
+        
+          <div "${classes.description__imgContainer}">
+           <img class = "img-cover ${classes.description__img}"src = "${img}"/>
+          </div>
+            <div class = "${classes.description__spanContainer}">
+              <span class = "${classes.description__span}">${place}</span>
+              <span class = "${classes.description__span}">Год установки: ${year}</span>
+              <span class = "${classes.description__span}">Скульптор: ${sculptureName}</span>
+            </div>
+        </div>
+          <button 
+          class = "btn btn-contain ${classes.description__btn}"
+          onclick = "modal.innerHTML = ''"
+          style = "background-image: url(${closeWhite})"
+          ></button>
+      </div>
+    
+    `;
+    ROOT_MODAL.innerHTML = htmlContent;
   }
 }
+
+export default new Description();
