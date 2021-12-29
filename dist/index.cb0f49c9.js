@@ -469,7 +469,7 @@ var _sculptureDefault = parcelHelpers.interopDefault(_sculpture);
     _sculptureDefault.default.eventListener();
 })();
 
-},{"./App/App":"7dJa6","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Sculpture/Sculpture":"349oM"}],"7dJa6":[function(require,module,exports) {
+},{"./App/App":"7dJa6","./Sculpture/Sculpture":"349oM","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"7dJa6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _sculpture = require("../Sculpture/Sculpture");
@@ -485,39 +485,7 @@ class App {
 }
 exports.default = new App();
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./App.css":"2urye","../Sculpture/Sculpture":"349oM","../Header/Header":"45XqP"}],"ciiiV":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, '__esModule', {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"2urye":[function(require,module,exports) {
-
-},{}],"349oM":[function(require,module,exports) {
+},{"../Sculpture/Sculpture":"349oM","./App.css":"2urye","../Header/Header":"45XqP","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"349oM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _url = require("../../../constants/url");
@@ -598,14 +566,44 @@ class Sculpture {
 }
 exports.default = new Sculpture();
 
-},{"../../../constants/url":"kGrNe","../../../constants/root":"cKJfz","../../../utils/getDataApi":"9w08l","./Sculpture.css":"dz5TO","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../Error/Error":"kyZeG","../Description/Description":"1gjWS"}],"kGrNe":[function(require,module,exports) {
+},{"../../../constants/url":"kGrNe","../../../constants/root":"cKJfz","../../../utils/getDataApi":"9w08l","../Description/Description":"1gjWS","../Error/Error":"kyZeG","./Sculpture.css":"dz5TO","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"kGrNe":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "URL", ()=>URL
 );
 const URL = "http://myjson.dit.upm.es/api/bins/dlll";
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"cKJfz":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"ciiiV":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, '__esModule', {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === 'default' || key === '__esModule' || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"cKJfz":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ROOT_INDEX", ()=>ROOT_INDEX
@@ -2196,40 +2194,6 @@ module.exports = CancelToken;
     return typeof payload === 'object' && payload.isAxiosError === true;
 };
 
-},{}],"dz5TO":[function(require,module,exports) {
-module.exports["sculpture__container"] = "_sculpture__container_8ffba6";
-module.exports["sculpture__item"] = "_sculpture__item_8ffba6";
-module.exports["sculpture__name"] = "_sculpture__name_8ffba6";
-module.exports["sculpture__img"] = "_sculpture__img_8ffba6";
-module.exports["sculpture__place"] = "_sculpture__place_8ffba6";
-module.exports["sculpture__year"] = "_sculpture__year_8ffba6";
-module.exports["sculpture__sculp"] = "_sculpture__sculp_8ffba6";
-
-},{}],"kyZeG":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _root = require("../../../constants/root");
-var _errorCss = require("./Error.css");
-class Error {
-    render() {
-        const htmlWrapper = `
-        <div class = "${_errorCss.error__container}">
-            <span>
-                <p class = "${_errorCss.error__alert}">Произошла ошибка.Попробуйте перезагрузить страницу</p>
-            </span>
-        
-        </div>
-      
-      `;
-        _root.ROOT_INDEX.innerHTML = htmlWrapper;
-    }
-}
-exports.default = new Error();
-
-},{"../../../constants/root":"cKJfz","./Error.css":"jpALL","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"jpALL":[function(require,module,exports) {
-module.exports["error__container"] = "_error__container_4d8fd2";
-module.exports["error__alert"] = "_error__alert_4d8fd2";
-
 },{}],"1gjWS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -2265,7 +2229,7 @@ class Description {
 }
 exports.default = new Description();
 
-},{"./Description.css":"kX1aH","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../../../constants/root":"cKJfz","../Images/icons8-удалить.svg":"99yri"}],"kX1aH":[function(require,module,exports) {
+},{"../../../constants/root":"cKJfz","./Description.css":"kX1aH","../Images/icons8-удалить.svg":"99yri","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"kX1aH":[function(require,module,exports) {
 module.exports["description__wrapper"] = "_description__wrapper_8ff7ac";
 module.exports["description__container"] = "_description__container_8ff7ac";
 module.exports["description__imgContainer"] = "_description__imgContainer_8ff7ac";
@@ -2311,6 +2275,42 @@ function getOrigin(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
+
+},{}],"kyZeG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _root = require("../../../constants/root");
+var _errorCss = require("./Error.css");
+class Error {
+    render() {
+        const htmlWrapper = `
+        <div class = "${_errorCss.error__container}">
+            <span>
+                <p class = "${_errorCss.error__alert}">Произошла ошибка.Попробуйте перезагрузить страницу</p>
+            </span>
+        
+        </div>
+      
+      `;
+        _root.ROOT_INDEX.innerHTML = htmlWrapper;
+    }
+}
+exports.default = new Error();
+
+},{"../../../constants/root":"cKJfz","./Error.css":"jpALL","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"jpALL":[function(require,module,exports) {
+module.exports["error__container"] = "_error__container_4d8fd2";
+module.exports["error__alert"] = "_error__alert_4d8fd2";
+
+},{}],"dz5TO":[function(require,module,exports) {
+module.exports["sculpture__container"] = "_sculpture__container_8ffba6";
+module.exports["sculpture__item"] = "_sculpture__item_8ffba6";
+module.exports["sculpture__name"] = "_sculpture__name_8ffba6";
+module.exports["sculpture__img"] = "_sculpture__img_8ffba6";
+module.exports["sculpture__place"] = "_sculpture__place_8ffba6";
+module.exports["sculpture__year"] = "_sculpture__year_8ffba6";
+module.exports["sculpture__sculp"] = "_sculpture__sculp_8ffba6";
+
+},{}],"2urye":[function(require,module,exports) {
 
 },{}],"45XqP":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
