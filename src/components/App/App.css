@@ -1,7 +1,7 @@
 :root {
   --color-dark: rgb(117, 124, 99);
   --color-light: #9e9595;
-  --color-medium: rgb(142 167 143);
+  --color-medium: #817474;
   --color-black: #282828;
   --color-white: #c5b1b1;
 
@@ -50,7 +50,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--color-light);
+  background-color: var(--color-medium);
   border-radius: 2px;
 }
 
