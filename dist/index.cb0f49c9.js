@@ -2205,17 +2205,22 @@ class Description {
     render(place, year, sculptureName, img) {
         const htmlContent = `
       <div class = "${_descriptionCss.description__wrapper}">
-        <div class = "${_descriptionCss.description__container}">
+          <div class = "${_descriptionCss.description__container}">
         
-          <div "${_descriptionCss.description__imgContainer}">
-           <img class = "img-cover ${_descriptionCss.description__img}"src = "${img}"/>
-          </div>
+            <div "${_descriptionCss.description__imgContainer}">
+              <img class = "img-cover ${_descriptionCss.description__img}"src = "${img}"/>
+            </div>
             <div class = "${_descriptionCss.description__spanContainer}">
               <span class = "${_descriptionCss.description__span}">${place}</span>
               <span class = "${_descriptionCss.description__span}">Год установки: ${year}</span>
               <span class = "${_descriptionCss.description__span}">Скульптор: ${sculptureName}</span>
             </div>
-        </div>
+            <div class = "${_descriptionCss.description__buttonContainer}">
+             <button class = "btn ${_descriptionCss.description__button}">Подробнее</button>
+            </div>
+
+          </div>
+          
           <button 
           class = "btn btn-contain ${_descriptionCss.description__btn}"
           onclick = "modal.innerHTML = ''"
@@ -2237,6 +2242,8 @@ module.exports["description__img"] = "_description__img_8ff7ac";
 module.exports["description__spanContainer"] = "_description__spanContainer_8ff7ac";
 module.exports["description__span"] = "_description__span_8ff7ac";
 module.exports["description__btn"] = "_description__btn_8ff7ac";
+module.exports["description__buttonContainer"] = "_description__buttonContainer_8ff7ac";
+module.exports["description__button"] = "_description__button_8ff7ac";
 
 },{}],"99yri":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('juzso') + "icons8-удалить.54ef3420.svg" + "?" + Date.now();

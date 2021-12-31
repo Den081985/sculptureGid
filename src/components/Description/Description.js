@@ -8,17 +8,22 @@ class Description {
   render(place, year, sculptureName, img) {
     const htmlContent = `
       <div class = "${classes.description__wrapper}">
-        <div class = "${classes.description__container}">
+          <div class = "${classes.description__container}">
         
-          <div "${classes.description__imgContainer}">
-           <img class = "img-cover ${classes.description__img}"src = "${img}"/>
-          </div>
+            <div "${classes.description__imgContainer}">
+              <img class = "img-cover ${classes.description__img}"src = "${img}"/>
+            </div>
             <div class = "${classes.description__spanContainer}">
               <span class = "${classes.description__span}">${place}</span>
               <span class = "${classes.description__span}">Год установки: ${year}</span>
               <span class = "${classes.description__span}">Скульптор: ${sculptureName}</span>
             </div>
-        </div>
+            <div class = "${classes.description__buttonContainer}">
+             <button class = "btn ${classes.description__button}">Подробнее</button>
+            </div>
+
+          </div>
+          
           <button 
           class = "btn btn-contain ${classes.description__btn}"
           onclick = "modal.innerHTML = ''"

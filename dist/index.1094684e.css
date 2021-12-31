@@ -54,6 +54,17 @@
   top: var(--spacing-large);
   right: var(--spacing-large);
 }
+._description__buttonContainer_8ff7ac {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+._description__button_8ff7ac {
+  font-family: "Source Serif Pro", serif;
+  font-size: 20px;
+  color: var(--color-black);
+}
 
 ._error__container_4d8fd2 {
   display: flex;

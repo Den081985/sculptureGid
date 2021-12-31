@@ -58,3 +58,16 @@
   top: var(--spacing-large);
   right: var(--spacing-large);
 }
+
+.description__buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.description__button {
+  font-family: "Source Serif Pro", serif;
+  font-size: 20px;
+  color: var(--color-black);
+}
