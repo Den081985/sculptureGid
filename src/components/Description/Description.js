@@ -4,6 +4,8 @@ import * as classes from "./Description.css";
 
 import closeWhite from "../Images/icons8-удалить.svg";
 
+import About from "../About/About";
+
 class Description {
   render(place, year, sculptureName, img) {
     const htmlContent = `
@@ -17,10 +19,9 @@ class Description {
               <span class = "${classes.description__span}">${place}</span>
               <span class = "${classes.description__span}">Год установки: ${year}</span>
               <span class = "${classes.description__span}">Скульптор: ${sculptureName}</span>
+              <span class = "spanButton ${classes.description__spanBtn}">Подробнее</span>
             </div>
-            <div class = "${classes.description__buttonContainer}">
-             <button class = "btn ${classes.description__button}">Подробнее</button>
-            </div>
+             
 
           </div>
           
@@ -33,6 +34,13 @@ class Description {
     
     `;
     ROOT_MODAL.innerHTML = htmlContent;
+  }
+
+  eventListener(describe) {
+    const element = document.querySelector(".spanButton");
+    element.addEventListener("click", () => {
+      About.render(describe);
+    });
   }
 }
 

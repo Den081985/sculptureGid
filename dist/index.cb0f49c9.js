@@ -525,7 +525,9 @@ class Sculpture {
             element.addEventListener("click", async ()=>{
                 if (id === "el1") {
                     const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/8bs9");
+                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/6j4h");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
+                    _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el2") {
                     const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/da0x");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
@@ -2201,6 +2203,8 @@ var _root = require("../../../constants/root");
 var _descriptionCss = require("./Description.css");
 var _icons8удалитьSvg = require("../Images/icons8-удалить.svg");
 var _icons8удалитьSvgDefault = parcelHelpers.interopDefault(_icons8удалитьSvg);
+var _about = require("../About/About");
+var _aboutDefault = parcelHelpers.interopDefault(_about);
 class Description {
     render(place, year, sculptureName, img) {
         const htmlContent = `
@@ -2214,10 +2218,9 @@ class Description {
               <span class = "${_descriptionCss.description__span}">${place}</span>
               <span class = "${_descriptionCss.description__span}">Год установки: ${year}</span>
               <span class = "${_descriptionCss.description__span}">Скульптор: ${sculptureName}</span>
+              <span class = "spanButton ${_descriptionCss.description__spanBtn}">Подробнее</span>
             </div>
-            <div class = "${_descriptionCss.description__buttonContainer}">
-             <button class = "btn ${_descriptionCss.description__button}">Подробнее</button>
-            </div>
+             
 
           </div>
           
@@ -2231,10 +2234,16 @@ class Description {
     `;
         _root.ROOT_MODAL.innerHTML = htmlContent;
     }
+    eventListener(describe) {
+        const element = document.querySelector(".spanButton");
+        element.addEventListener("click", ()=>{
+            _aboutDefault.default.render(describe);
+        });
+    }
 }
 exports.default = new Description();
 
-},{"../../../constants/root":"cKJfz","./Description.css":"kX1aH","../Images/icons8-удалить.svg":"99yri","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"kX1aH":[function(require,module,exports) {
+},{"../../../constants/root":"cKJfz","./Description.css":"kX1aH","../Images/icons8-удалить.svg":"99yri","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../About/About":"b6yCy"}],"kX1aH":[function(require,module,exports) {
 module.exports["description__wrapper"] = "_description__wrapper_8ff7ac";
 module.exports["description__container"] = "_description__container_8ff7ac";
 module.exports["description__imgContainer"] = "_description__imgContainer_8ff7ac";
@@ -2242,8 +2251,7 @@ module.exports["description__img"] = "_description__img_8ff7ac";
 module.exports["description__spanContainer"] = "_description__spanContainer_8ff7ac";
 module.exports["description__span"] = "_description__span_8ff7ac";
 module.exports["description__btn"] = "_description__btn_8ff7ac";
-module.exports["description__buttonContainer"] = "_description__buttonContainer_8ff7ac";
-module.exports["description__button"] = "_description__button_8ff7ac";
+module.exports["description__spanBtn"] = "_description__spanBtn_8ff7ac";
 
 },{}],"99yri":[function(require,module,exports) {
 module.exports = require('./helpers/bundle-url').getBundleURL('juzso') + "icons8-удалить.54ef3420.svg" + "?" + Date.now();
@@ -2282,6 +2290,40 @@ function getOrigin(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
+
+},{}],"b6yCy":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _root = require("../../../constants/root");
+var _aboutCss = require("./About.css");
+var _icons8удалитьSvg = require("../Images/icons8-удалить.svg");
+var _icons8удалитьSvgDefault = parcelHelpers.interopDefault(_icons8удалитьSvg);
+class About {
+    render(describe) {
+        const htmlContent = `
+       <div class = "${_aboutCss.about__wrapper}">
+          <div class = "${_aboutCss.about__container}">
+            <span class = "${_aboutCss.about__text}">${describe}</span>
+            <button 
+            class = "btn btn-contain ${_aboutCss.about__btn}"
+            onclick = "modal.innerHTML = ''"
+            style = "background-image: url(${_icons8удалитьSvgDefault.default})"
+              ></button>       
+          </div>
+       </div>
+    
+    
+    `;
+        _root.ROOT_MODAL.innerHTML = htmlContent;
+    }
+}
+exports.default = new About();
+
+},{"../../../constants/root":"cKJfz","./About.css":"8uHAC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../Images/icons8-удалить.svg":"99yri"}],"8uHAC":[function(require,module,exports) {
+module.exports["about__wrapper"] = "_about__wrapper_6bf2c8";
+module.exports["about__container"] = "_about__container_6bf2c8";
+module.exports["about__text"] = "_about__text_6bf2c8";
+module.exports["about__btn"] = "_about__btn_6bf2c8";
 
 },{}],"kyZeG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");

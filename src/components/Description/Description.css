@@ -59,15 +59,10 @@
   right: var(--spacing-large);
 }
 
-.description__buttonContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.description__button {
-  font-family: "Source Serif Pro", serif;
+.description__spanBtn {
+  margin: var(--spacing-large);
   font-size: 20px;
   color: var(--color-black);
+  font-family: "Source Serif Pro", serif;
+  cursor: pointer;
 }

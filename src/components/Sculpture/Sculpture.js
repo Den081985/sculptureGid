@@ -43,7 +43,11 @@ class Sculpture {
           const { place, year, sculptureName, img } = await getDataApi.getData(
             "http://myjson.dit.upm.es/api/bins/8bs9"
           );
+          const { describe } = await getDataApi.getData(
+            "http://myjson.dit.upm.es/api/bins/6j4h"
+          );
           Description.render(place, year, sculptureName, img);
+          Description.eventListener(describe);
         } else if (id === "el2") {
           const { place, year, sculptureName, img } = await getDataApi.getData(
             "http://myjson.dit.upm.es/api/bins/da0x"
