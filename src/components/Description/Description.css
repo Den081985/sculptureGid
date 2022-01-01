@@ -66,3 +66,7 @@
   font-family: "Source Serif Pro", serif;
   cursor: pointer;
 }
+
+.description__spanBtn:hover {
+  color: var(--color-extrawhite);
+}
