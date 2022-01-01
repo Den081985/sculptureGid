@@ -9,7 +9,7 @@ class About {
     const htmlContent = `
        <div class = "${classes.about__wrapper}">
           <div class = "${classes.about__container}">
-            <span class = "${classes.about__text}">${describe}</span>
+            <span class = "${classes.about__text}">"${describe}"</span>
             <button 
             class = "btn btn-contain ${classes.about__btn}"
             onclick = "modal.innerHTML = ''"
