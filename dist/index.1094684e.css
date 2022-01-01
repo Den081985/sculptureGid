@@ -61,6 +61,9 @@
   font-family: "Source Serif Pro", serif;
   cursor: pointer;
 }
+._description__spanBtn_8ff7ac:hover {
+  color: var(--color-extrawhite);
+}
 
 ._about__wrapper_6bf2c8 {
   position: fixed;
@@ -191,6 +194,7 @@
   --color-medium: #817474;
   --color-black: #282828;
   --color-white: #c5b1b1;
+  --color-extrawhite: rgb(238, 225, 225);
 
   --spacing-small: 10px;
   --spacing-medium: 15px;
