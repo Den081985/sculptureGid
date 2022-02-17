@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marck+Script&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+.auth__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  max-width: 1200px;
+  height: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: var(--spacing-large);
+  overflow: auto;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+}
+
+.auth__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+}
+
+.auth__btn {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: var(--spacing-large);
+  right: var(--spacing-large);
+}
+.auth__label {
+  margin: 40px;
+  margin-left: 60px;
+  font-family: "Source Serif Pro", serif;
+  font-size: 20px;
+  color: var(--color-black);
+  border-bottom: 1px solid var(--color-medium);
+}
+.auth__span {
+  color: var(--color-black);
+  font-family: "Marck Script", cursive;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+.auth__input {
+  margin-left: 60px;
+}
+
+input {
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0;
+  background-color: var(--color-light);
+  border-bottom: 1px solid var(--color-medium);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+input :focus {
+  outline: none;
+  border: none;
+}
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px;
+  border: none;
+}
+.auth__submit {
+  margin-top: 20px;
+  margin-left: 60px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  width: 200px;
+  font-family: "Source Serif Pro", serif;
+  font-size: 15px;
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
