@@ -464,12 +464,15 @@ var _app = require("./App/App");
 var _appDefault = parcelHelpers.interopDefault(_app);
 var _sculpture = require("./Sculpture/Sculpture");
 var _sculptureDefault = parcelHelpers.interopDefault(_sculpture);
+var _auth = require("./Auth/Auth");
+var _authDefault = parcelHelpers.interopDefault(_auth);
 (async ()=>{
     await _appDefault.default.render();
     _sculptureDefault.default.eventListener();
+    _authDefault.default.authListener();
 })();
 
-},{"./App/App":"7dJa6","./Sculpture/Sculpture":"349oM","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"7dJa6":[function(require,module,exports) {
+},{"./App/App":"7dJa6","./Sculpture/Sculpture":"349oM","./Auth/Auth":"7IbKa","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"7dJa6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _sculpture = require("../Sculpture/Sculpture");
@@ -2265,7 +2268,7 @@ class Description {
 }
 exports.default = new Description();
 
-},{"../../../constants/root":"cKJfz","./Description.css":"kX1aH","../Images/icons8-удалить.svg":"99yri","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../About/About":"b6yCy"}],"kX1aH":[function(require,module,exports) {
+},{"../../../constants/root":"cKJfz","./Description.css":"kX1aH","../Images/icons8-удалить.svg":"99yri","../About/About":"b6yCy","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"kX1aH":[function(require,module,exports) {
 module.exports["description__wrapper"] = "_description__wrapper_8ff7ac";
 module.exports["description__container"] = "_description__container_8ff7ac";
 module.exports["description__imgContainer"] = "_description__imgContainer_8ff7ac";
@@ -2341,7 +2344,7 @@ class About {
 }
 exports.default = new About();
 
-},{"../../../constants/root":"cKJfz","./About.css":"8uHAC","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../Images/icons8-удалить.svg":"99yri"}],"8uHAC":[function(require,module,exports) {
+},{"../../../constants/root":"cKJfz","./About.css":"8uHAC","../Images/icons8-удалить.svg":"99yri","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"8uHAC":[function(require,module,exports) {
 module.exports["about__wrapper"] = "_about__wrapper_6bf2c8";
 module.exports["about__container"] = "_about__container_6bf2c8";
 module.exports["about__text"] = "_about__text_6bf2c8";
@@ -2393,6 +2396,11 @@ class Header {
         const htmlContent = `
         <div class = "${_headerCss.header__container}">
             <span class = "${_headerCss.header__span}">Городская скульптура Таганрога</span>
+            <div class="${_headerCss.header__items}">
+                  <span id="auth" class=" ${_headerCss.header__item}" data-id="auth">Регистрация</span>
+                  <span class="${_headerCss.header__item}" data-id="enter">Войти</span>
+                  <span class="${_headerCss.header__item}" data-id="comment">Комментарии</span>
+                </div>
         </div>
       
       `;
@@ -2404,6 +2412,114 @@ exports.default = new Header();
 },{"../../../constants/root":"cKJfz","./Header.css":"bZu5w","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"bZu5w":[function(require,module,exports) {
 module.exports["header__container"] = "_header__container_cd9d03";
 module.exports["header__span"] = "_header__span_cd9d03";
+module.exports["header__items"] = "_header__items_cd9d03";
+module.exports["header__item"] = "_header__item_cd9d03";
+
+},{}],"7IbKa":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+//компонент для работы с авторизацией
+//ренедеринг окна авторизации
+parcelHelpers.export(exports, "openAuthModal", ()=>openAuthModal
+);
+//рендеринг окна входа
+parcelHelpers.export(exports, "openAuthEnter", ()=>openAuthEnter
+);
+parcelHelpers.export(exports, "authEmailAndPassword", ()=>authEmailAndPassword
+);
+var _authCss = require("./Auth.css");
+var _root = require("../../../constants/root");
+var _icons8удалитьSvg = require("../Images/icons8-удалить.svg");
+var _icons8удалитьSvgDefault = parcelHelpers.interopDefault(_icons8удалитьSvg);
+function openAuthModal() {
+    const html = `
+      <div class="${_authCss.auth__wrapper}">
+        
+        <div class="${_authCss.auth__container}">
+        <span class="${_authCss.auth__span}">РЕГИСТРАЦИЯ</span>
+        <form class="${_authCss.auth__form}" id="auth-form">
+        <div class="${_authCss.auth__input}">
+          <input  type="text" id="name" required>
+          <label for="name" class="${_authCss.auth__label}">ФИО</label>
+        </div>
+        <div class="${_authCss.auth__input}">
+          <input type="email" id="email" required>
+          <label for="email" class="${_authCss.auth__label}">EMAIL</label>
+        </div>
+        <div class="${_authCss.auth__input}">
+          <input type="password" id="password" required>
+          <label for="password" class="${_authCss.auth__label}">ПАРОЛЬ</label>
+        </div>
+        <button type="submit" class="${_authCss.auth__submit}">Отправить</button>
+        </form>
+        </div>
+        <button class="btn btn-contain ${_authCss.auth__btn}" 
+        onclick = "modal.innerHTML = ''"
+        style="background-image: url(${_icons8удалитьSvgDefault.default})"></button>
+      </div>      
+      `;
+    _root.ROOT_MODAL.innerHTML = html;
+}
+function openAuthEnter() {
+    return `
+      <form class="${_authCss.enter__form}" id="enter-form">
+      <div class="${_authCss.enter__email}">
+        <input type="email" id="email" required>
+        <label for="email">EMAIL</label>
+      </div>
+      <div class="${_authCss.enter__password}">
+        <input type="password" id="password"required>
+        <label for="password">ПАРОЛЬ</label>
+      </div>
+      <button type="submit" class="${enter__btn}">Войти</button>
+    </form>
+      
+      `;
+}
+function authEmailAndPassword(email, password) {
+    const apiKey = "AIzaSyDhmHw1vcPxiuoXHyqqQ1sJfNDJ64PWq-s";
+    return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`, {
+        method: "POST",
+        body: JSON.stringify({
+            email,
+            password,
+            returnSecureToken: true
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then((response)=>response.json()
+    ).then((data)=>data.localId
+    );
+}
+// export function activateModal(title, content) {
+//   const html = `
+//           <div class="modal__title">${title}</div>
+//           <div class="modal__content">${content}</div>
+//       `;
+//   ROOT_MODAL.innerHTML = html;
+// }
+// export function renderAuthModal() {
+//   activateModal("АВТОРИЗАЦИЯ", openAuthModal());
+// }
+class Auth {
+    authListener() {
+        const element = document.getElementById("auth");
+        element.addEventListener("click", ()=>{
+            openAuthModal();
+        });
+    }
+}
+exports.default = new Auth();
+
+},{"./Auth.css":"fGOwk","../../../constants/root":"cKJfz","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../Images/icons8-удалить.svg":"99yri"}],"fGOwk":[function(require,module,exports) {
+module.exports["auth__container"] = "_auth__container_a5fcb1";
+module.exports["auth__wrapper"] = "_auth__wrapper_a5fcb1";
+module.exports["auth__btn"] = "_auth__btn_a5fcb1";
+module.exports["auth__label"] = "_auth__label_a5fcb1";
+module.exports["auth__span"] = "_auth__span_a5fcb1";
+module.exports["auth__input"] = "_auth__input_a5fcb1";
+module.exports["auth__submit"] = "_auth__submit_a5fcb1";
 
 },{}]},["gUsm1","iKUBW"], "iKUBW", "parcelRequire8c80")
 

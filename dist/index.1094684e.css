@@ -1,6 +1,8 @@
 @import "https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,700&display=swap";
 @import "https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@1,700&display=swap";
 @import "https://fonts.googleapis.com/css2?family=Marck+Script&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,700&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Marck+Script&display=swap";
 /* CSS свойство backdrop-filter позволяет вам использовать визуальные эффекты - такие как размытие или смещение цвета фона - за элементом. */
 ._description__wrapper_8ff7ac {
   position: fixed;
@@ -293,6 +295,123 @@ body {
   font-size: 35px;
   color: var(--color-white);
   font-family: "Marck Script", cursive;
+}
+
+._header__items_cd9d03 {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+._header__item_cd9d03 {
+  color: var(--color-white);
+  font-family: "Marck Script", cursive;
+  font-size: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-top: var(--spacing-medium);
+  margin-left: var(--spacing-large);
+  cursor: pointer;
+}
+
+._header__item_cd9d03:hover {
+  color: var(--color-extrawhite);
+}
+
+* {
+  box-sizing: border-box;
+}
+._auth__container_a5fcb1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  max-width: 1200px;
+  height: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: var(--spacing-large);
+  overflow: auto;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+}
+._auth__wrapper_a5fcb1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+}
+._auth__btn_a5fcb1 {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: var(--spacing-large);
+  right: var(--spacing-large);
+}
+._auth__label_a5fcb1 {
+  margin: 40px;
+  margin-left: 60px;
+  font-family: "Source Serif Pro", serif;
+  font-size: 20px;
+  color: var(--color-black);
+  border-bottom: 1px solid var(--color-medium);
+}
+._auth__span_a5fcb1 {
+  color: var(--color-black);
+  font-family: "Marck Script", cursive;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+._auth__input_a5fcb1 {
+  margin-left: 60px;
+}
+input {
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  border: 0;
+  background-color: var(--color-light);
+  border-bottom: 1px solid var(--color-medium);
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+input :focus {
+  outline: none;
+  border: none;
+}
+button {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  padding: 10px;
+  border: none;
+}
+._auth__submit_a5fcb1 {
+  margin-top: 20px;
+  margin-left: 60px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  width: 200px;
+  font-family: "Source Serif Pro", serif;
+  font-size: 15px;
+  color: var(--color-black);
+  background-color: var(--color-white);
 }
 
 /*# sourceMappingURL=index.1094684e.css.map */
