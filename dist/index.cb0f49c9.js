@@ -462,6 +462,8 @@ function hmrAcceptRun(bundle, id) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _app = require("./App/App");
 var _appDefault = parcelHelpers.interopDefault(_app);
+var _comments = require("./Comments/Comments");
+var _commentsDefault = parcelHelpers.interopDefault(_comments);
 var _sculpture = require("./Sculpture/Sculpture");
 var _sculptureDefault = parcelHelpers.interopDefault(_sculpture);
 var _auth = require("./Auth/Auth");
@@ -471,9 +473,10 @@ var _authDefault = parcelHelpers.interopDefault(_auth);
     _sculptureDefault.default.eventListener();
     _authDefault.default.authListener();
     _authDefault.default.enterListener();
+// Comments.listener();
 })();
 
-},{"./App/App":"7dJa6","./Sculpture/Sculpture":"349oM","./Auth/Auth":"7IbKa","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"7dJa6":[function(require,module,exports) {
+},{"./App/App":"7dJa6","./Sculpture/Sculpture":"349oM","./Auth/Auth":"7IbKa","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Comments/Comments":"72BRE"}],"7dJa6":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _sculpture = require("../Sculpture/Sculpture");
@@ -2433,6 +2436,7 @@ var _authCss = require("./Auth.css");
 var _root = require("../../../constants/root");
 var _icons8удалитьSvg = require("../Images/icons8-удалить.svg");
 var _icons8удалитьSvgDefault = parcelHelpers.interopDefault(_icons8удалитьSvg);
+var _comments = require("../Comments/Comments");
 function openAuthModal() {
     const html = `
       <div class="${_authCss.auth__wrapper}">
@@ -2527,7 +2531,7 @@ function openAfterEnterModal(idToken) {
       <div class="${_authCss.auth__postmodal}">
        <span class="${_authCss.auth__postenter}">Вы выполнили вход как авторизованный пользователь</span>
        <span class="${_authCss.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога</span>
-       <span class="${_authCss.auth__postsubmit}">Оставить комментарий</span>
+       <span class="spanComment ${_authCss.auth__postsubmit}">Оставить комментарий</span>
       </div>
       <button class="btn btn-contain ${_authCss.auth__btn}" 
       onclick = "modal.innerHTML = ''"
@@ -2536,6 +2540,7 @@ function openAfterEnterModal(idToken) {
   
   `;
     _root.ROOT_MODAL.innerHTML = html;
+    console.log(idToken);
 }
 //рендеринг модального окна поставторизации
 function openAfterAuthModal(localId) {
@@ -2561,7 +2566,12 @@ function enterHandler(e) {
     const btn = e.target.querySelector("#btn");
     btn.disabled = true;
     enterEmailAndPassword(email, password).then((idToken)=>openAfterEnterModal(idToken)
-    ).then(()=>btn.disabled = false
+    ).then(()=>{
+        const element = document.querySelector(".spanComment");
+        element.addEventListener("click", ()=>{
+            _comments.openCommentsModal();
+        });
+    }).then(()=>btn.disabled = false
     );
 }
 //функция для работы с данными формы
@@ -2611,7 +2621,7 @@ class Auth {
 }
 exports.default = new Auth();
 
-},{"./Auth.css":"fGOwk","../../../constants/root":"cKJfz","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../Images/icons8-удалить.svg":"99yri"}],"fGOwk":[function(require,module,exports) {
+},{"./Auth.css":"fGOwk","../../../constants/root":"cKJfz","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","../Images/icons8-удалить.svg":"99yri","../Comments/Comments":"72BRE"}],"fGOwk":[function(require,module,exports) {
 module.exports["auth__container"] = "_auth__container_a5fcb1";
 module.exports["auth__wrapper"] = "_auth__wrapper_a5fcb1";
 module.exports["auth__btn"] = "_auth__btn_a5fcb1";
@@ -2623,6 +2633,53 @@ module.exports["auth__postmodal"] = "_auth__postmodal_a5fcb1";
 module.exports["auth__postspan"] = "_auth__postspan_a5fcb1";
 module.exports["auth__postenter"] = "_auth__postenter_a5fcb1";
 module.exports["auth__postsubmit"] = "_auth__postsubmit_a5fcb1";
+
+},{}],"72BRE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "openCommentsModal", ()=>openCommentsModal
+);
+//компонент для работы с комментариями
+var _root = require("../../../constants/root");
+var _commentsCss = require("./Comments.css");
+var _icons8удалитьSvg = require("../Images/icons8-удалить.svg");
+var _icons8удалитьSvgDefault = parcelHelpers.interopDefault(_icons8удалитьSvg);
+function openCommentsModal() {
+    const html = `
+    <div class="${_commentsCss.comment__wrapper}">
+        
+      <div class="${_commentsCss.comment__container}">
+        <span class="${_commentsCss.comment__span}">Оставить комментарий</span>
+        <form class="${_commentsCss.comment__form}" id="auth-form">
+          <div class="${_commentsCss.comment__area}">
+            <textarea  
+            id="comment-area"
+            rows="10"
+            cols="45"
+            required
+            placeholder="Comment..."></textarea>
+          </div>
+         <button type="submit" class="${_commentsCss.comment__submit}">Отправить</button>
+        </form>
+      </div>
+        <button class="btn btn-contain ${_commentsCss.comment__btn}" 
+        onclick = "modal.innerHTML = ''"
+        style="background-image: url(${_icons8удалитьSvgDefault.default})"></button>
+    </div>      
+    `;
+    _root.ROOT_MODAL.innerHTML = html;
+}
+//класс для работы с комментариями
+class Comments {
+}
+exports.default = new Comments();
+
+},{"../../../constants/root":"cKJfz","./Comments.css":"g6cr3","../Images/icons8-удалить.svg":"99yri","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"g6cr3":[function(require,module,exports) {
+module.exports["comment__wrapper"] = "_comment__wrapper_d97a65";
+module.exports["comment__container"] = "_comment__container_d97a65";
+module.exports["comment__span"] = "_comment__span_d97a65";
+module.exports["comment__submit"] = "_comment__submit_d97a65";
+module.exports["comment__btn"] = "_comment__btn_d97a65";
 
 },{}]},["gUsm1","iKUBW"], "iKUBW", "parcelRequire8c80")
 
