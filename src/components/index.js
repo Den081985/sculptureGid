@@ -7,4 +7,5 @@ import Auth from "./Auth/Auth";
   await App.render();
   Sculpture.eventListener();
   Auth.authListener();
+  Auth.enterListener();
 })();
