@@ -2,6 +2,7 @@ import * as classes from "./Auth.css";
 
 import { ROOT_MODAL } from "../../../constants/root";
 import closeWhite from "../Images/icons8-удалить.svg";
+import { openCommentsModal } from "../Comments/Comments";
 
 //компонент для работы с авторизацией
 
@@ -104,7 +105,7 @@ function openAfterEnterModal(idToken) {
       <div class="${classes.auth__postmodal}">
        <span class="${classes.auth__postenter}">Вы выполнили вход как авторизованный пользователь</span>
        <span class="${classes.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога</span>
-       <span class="${classes.auth__postsubmit}">Оставить комментарий</span>
+       <span class="spanComment ${classes.auth__postsubmit}">Оставить комментарий</span>
       </div>
       <button class="btn btn-contain ${classes.auth__btn}" 
       onclick = "modal.innerHTML = ''"
@@ -113,6 +114,7 @@ function openAfterEnterModal(idToken) {
   
   `;
   ROOT_MODAL.innerHTML = html;
+  console.log(idToken);
 }
 
 //рендеринг модального окна поставторизации
@@ -142,6 +144,12 @@ function enterHandler(e) {
 
   enterEmailAndPassword(email, password)
     .then((idToken) => openAfterEnterModal(idToken))
+    .then(() => {
+      const element = document.querySelector(".spanComment");
+      element.addEventListener("click", () => {
+        openCommentsModal();
+      });
+    })
     .then(() => (btn.disabled = false));
 }
 //функция для работы с данными формы
