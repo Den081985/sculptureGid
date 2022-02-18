@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marck+Script&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.comment__wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+}
+.comment__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  max-width: 1200px;
+  height: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: var(--spacing-large);
+  overflow: auto;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+}
+.comment__span {
+  color: var(--color-black);
+  font-family: "Marck Script", cursive;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 70px;
+}
+.comment__submit {
+  margin-top: 20px;
+  margin-left: 60px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  width: 200px;
+  font-family: "Source Serif Pro", serif;
+  font-size: 15px;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+.comment__btn {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: var(--spacing-large);
+  right: var(--spacing-large);
+}
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px;
+  border: none;
+}
+textarea {
+  width: 100%;
+  margin: 0 auto;
+  resize: vertical;
+  padding: 15px;
+  border-radius: 15px;
+  border: 0;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-light);
+  color: var(--color-black);
+}
