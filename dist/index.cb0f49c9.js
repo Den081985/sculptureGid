@@ -470,6 +470,7 @@ var _authDefault = parcelHelpers.interopDefault(_auth);
     await _appDefault.default.render();
     _sculptureDefault.default.eventListener();
     _authDefault.default.authListener();
+    _authDefault.default.enterListener();
 })();
 
 },{"./App/App":"7dJa6","./Sculpture/Sculpture":"349oM","./Auth/Auth":"7IbKa","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"7dJa6":[function(require,module,exports) {
@@ -2398,8 +2399,8 @@ class Header {
             <span class = "${_headerCss.header__span}">Городская скульптура Таганрога</span>
             <div class="${_headerCss.header__items}">
                   <span id="auth" class=" ${_headerCss.header__item}" data-id="auth">Регистрация</span>
-                  <span class="${_headerCss.header__item}" data-id="enter">Войти</span>
-                  <span class="${_headerCss.header__item}" data-id="comment">Комментарии</span>
+                  <span id="enter"class="${_headerCss.header__item}" data-id="enter">Войти</span>
+                  <span id="comment"class="${_headerCss.header__item}" data-id="comment">Комментарии</span>
                 </div>
         </div>
       
@@ -2425,6 +2426,7 @@ parcelHelpers.export(exports, "openAuthModal", ()=>openAuthModal
 //рендеринг окна входа
 parcelHelpers.export(exports, "openAuthEnter", ()=>openAuthEnter
 );
+//функция для работы с данными авторизации
 parcelHelpers.export(exports, "authEmailAndPassword", ()=>authEmailAndPassword
 );
 var _authCss = require("./Auth.css");
@@ -2461,20 +2463,29 @@ function openAuthModal() {
     _root.ROOT_MODAL.innerHTML = html;
 }
 function openAuthEnter() {
-    return `
-      <form class="${_authCss.enter__form}" id="enter-form">
-      <div class="${_authCss.enter__email}">
-        <input type="email" id="email" required>
-        <label for="email">EMAIL</label>
+    const html = `
+      <div class="${_authCss.auth__wrapper}" >
+        <div class="${_authCss.auth__container}">
+        <span class="${_authCss.auth__span}">ВХОД</span>
+         <form class="${_authCss.enter__form}" id="enter-form">
+          <div class="${_authCss.auth__input}">
+           <input  type="email" id="email" required>
+           <label class="${_authCss.auth__label}" for="email">EMAIL</label>
+          </div>
+          <div class="${_authCss.auth__input}">
+           <input type="password" id="password"required>
+           <label class="${_authCss.auth__label}" for="password">ПАРОЛЬ</label>
+          </div>
+          <button type="submit" class="${_authCss.auth__submit}" id="btn">Войти</button>
+         </form>
+        </div>
+        <button class="btn btn-contain ${_authCss.auth__btn}" 
+        onclick = "modal.innerHTML = ''"
+        style="background-image: url(${_icons8удалитьSvgDefault.default})"></button>
       </div>
-      <div class="${_authCss.enter__password}">
-        <input type="password" id="password"required>
-        <label for="password">ПАРОЛЬ</label>
-      </div>
-      <button type="submit" class="${enter__btn}">Войти</button>
-    </form>
       
       `;
+    _root.ROOT_MODAL.innerHTML = html;
 }
 function authEmailAndPassword(email, password) {
     const apiKey = "AIzaSyDhmHw1vcPxiuoXHyqqQ1sJfNDJ64PWq-s";
@@ -2492,6 +2503,88 @@ function authEmailAndPassword(email, password) {
     ).then((data)=>data.localId
     );
 }
+//функция для работы с данными входа
+function enterEmailAndPassword(email, password) {
+    const apiKey = "AIzaSyDhmHw1vcPxiuoXHyqqQ1sJfNDJ64PWq-s";
+    return fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+        method: "POST",
+        body: JSON.stringify({
+            email,
+            password,
+            returnSecureToken: true
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then((response)=>response.json()
+    ).then((data)=>data.idToken
+    );
+}
+//рендеринг модального окна после входа
+function openAfterEnterModal(idToken) {
+    const html = `
+    <div class="${_authCss.auth__wrapper}">
+      <div class="${_authCss.auth__postmodal}">
+       <span class="${_authCss.auth__postenter}">Вы выполнили вход как авторизованный пользователь</span>
+       <span class="${_authCss.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога</span>
+       <span class="${_authCss.auth__postsubmit}">Оставить комментарий</span>
+      </div>
+      <button class="btn btn-contain ${_authCss.auth__btn}" 
+      onclick = "modal.innerHTML = ''"
+      style="background-image: url(${_icons8удалитьSvgDefault.default})"></button>
+    </div>
+  
+  `;
+    _root.ROOT_MODAL.innerHTML = html;
+}
+//рендеринг модального окна поставторизации
+function openAfterAuthModal(localId) {
+    const html = `
+    <div class="${_authCss.auth__wrapper}">
+      <div class="${_authCss.auth__postmodal}">
+       <span class="${_authCss.auth__postspan}">Регистрация прошла успешно</span>
+       <span class="${_authCss.auth__postspan}">Ваш ID пользователя: ${localId}</span>
+      </div>
+      <button class="btn btn-contain ${_authCss.auth__btn}" 
+      onclick = "modal.innerHTML = ''"
+      style="background-image: url(${_icons8удалитьSvgDefault.default})"></button>
+    </div>
+  
+  `;
+    _root.ROOT_MODAL.innerHTML = html;
+}
+//функция для работы с данными входа
+function enterHandler(e) {
+    e.preventDefault();
+    const email = e.target.querySelector("#email").value;
+    const password = e.target.querySelector("#password").value;
+    const btn = e.target.querySelector("#btn");
+    btn.disabled = true;
+    enterEmailAndPassword(email, password).then((idToken)=>openAfterEnterModal(idToken)
+    ).then(()=>btn.disabled = false
+    );
+}
+//функция для работы с данными формы
+function authHandler(e) {
+    e.preventDefault();
+    const email = e.target.querySelector("#email").value;
+    const password = e.target.querySelector("#password").value;
+    const btn = e.target.querySelector("button");
+    btn.disabled = true;
+    authEmailAndPassword(email, password).then((localId)=>openAfterAuthModal(localId)
+    ).then(()=>btn.disabled = false
+    );
+}
+//функция рендеринга окна регистрации
+function renderAuthModal() {
+    openAuthModal();
+    document.getElementById("auth-form").addEventListener("submit", authHandler);
+}
+//функция рендеринга окна входа
+function renderOpenModal() {
+    openAuthEnter();
+    document.getElementById("enter-form").addEventListener("submit", enterHandler);
+}
 // export function activateModal(title, content) {
 //   const html = `
 //           <div class="modal__title">${title}</div>
@@ -2506,7 +2599,13 @@ class Auth {
     authListener() {
         const element = document.getElementById("auth");
         element.addEventListener("click", ()=>{
-            openAuthModal();
+            renderAuthModal();
+        });
+    }
+    enterListener() {
+        const element = document.getElementById("enter");
+        element.addEventListener("click", ()=>{
+            renderOpenModal();
         });
     }
 }
@@ -2520,6 +2619,10 @@ module.exports["auth__label"] = "_auth__label_a5fcb1";
 module.exports["auth__span"] = "_auth__span_a5fcb1";
 module.exports["auth__input"] = "_auth__input_a5fcb1";
 module.exports["auth__submit"] = "_auth__submit_a5fcb1";
+module.exports["auth__postmodal"] = "_auth__postmodal_a5fcb1";
+module.exports["auth__postspan"] = "_auth__postspan_a5fcb1";
+module.exports["auth__postenter"] = "_auth__postenter_a5fcb1";
+module.exports["auth__postsubmit"] = "_auth__postsubmit_a5fcb1";
 
 },{}]},["gUsm1","iKUBW"], "iKUBW", "parcelRequire8c80")
 
