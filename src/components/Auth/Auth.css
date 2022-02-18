@@ -95,4 +95,57 @@ button {
   font-size: 15px;
   color: var(--color-black);
   background-color: var(--color-white);
+  cursor: pointer;
+}
+.auth__postmodal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  max-width: 1200px;
+  height: 600px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: var(--spacing-large);
+  overflow: auto;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+}
+.auth__postspan {
+  font-family: "Source Serif Pro", serif;
+  font-size: 20px;
+  color: var(--color-black);
+  border-bottom: 1px solid var(--color-medium);
+  text-align: center;
+  margin-bottom: 30px;
+}
+.auth__postenter {
+  font-family: "Source Serif Pro", serif;
+  font-size: 25px;
+  color: var(--color-black);
+  border-bottom: 1px solid var(--color-medium);
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: 70px;
+}
+.auth__postsubmit {
+  font-family: "Source Serif Pro", serif;
+  font-size: 25px;
+  color: var(--color-black);
+  border-bottom: 1px solid var(--color-medium);
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 800px;
+  cursor: pointer;
+  margin-left: 70px;
+}
+.auth__postsubmit:hover {
+  color: var(--color-extrawhite);
 }
