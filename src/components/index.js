@@ -8,5 +8,5 @@ import Auth from "./Auth/Auth";
   Sculpture.eventListener();
   Auth.authListener();
   Auth.enterListener();
-  // Comments.listener();
+  Comments.listener();
 })();
