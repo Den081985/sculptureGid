@@ -473,7 +473,7 @@ var _authDefault = parcelHelpers.interopDefault(_auth);
     _sculptureDefault.default.eventListener();
     _authDefault.default.authListener();
     _authDefault.default.enterListener();
-// Comments.listener();
+    _commentsDefault.default.listener();
 })();
 
 },{"./App/App":"7dJa6","./Sculpture/Sculpture":"349oM","./Auth/Auth":"7IbKa","@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV","./Comments/Comments":"72BRE"}],"7dJa6":[function(require,module,exports) {
@@ -2437,6 +2437,7 @@ var _root = require("../../../constants/root");
 var _icons8удалитьSvg = require("../Images/icons8-удалить.svg");
 var _icons8удалитьSvgDefault = parcelHelpers.interopDefault(_icons8удалитьSvg);
 var _comments = require("../Comments/Comments");
+var _commentsDefault = parcelHelpers.interopDefault(_comments);
 function openAuthModal() {
     const html = `
       <div class="${_authCss.auth__wrapper}">
@@ -2530,8 +2531,8 @@ function openAfterEnterModal(idToken) {
     <div class="${_authCss.auth__wrapper}">
       <div class="${_authCss.auth__postmodal}">
        <span class="${_authCss.auth__postenter}">Вы выполнили вход как авторизованный пользователь</span>
-       <span class="${_authCss.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога</span>
-       <span class="spanComment ${_authCss.auth__postsubmit}">Оставить комментарий</span>
+       <span class="${_authCss.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога в разделе "Комментарии"</span>
+       
       </div>
       <button class="btn btn-contain ${_authCss.auth__btn}" 
       onclick = "modal.innerHTML = ''"
@@ -2563,16 +2564,14 @@ function enterHandler(e) {
     e.preventDefault();
     const email = e.target.querySelector("#email").value;
     const password = e.target.querySelector("#password").value;
-    const btn = e.target.querySelector("#btn");
-    btn.disabled = true;
     enterEmailAndPassword(email, password).then((idToken)=>openAfterEnterModal(idToken)
-    ).then(()=>{
-        const element = document.querySelector(".spanComment");
-        element.addEventListener("click", ()=>{
-            _comments.openCommentsModal();
-        });
-    }).then(()=>btn.disabled = false
     );
+// .then(() => {
+//   const element = document.querySelector(".spanComment");
+//   element.addEventListener("click", () => {
+//     openCommentsModal();
+//   });
+// })
 }
 //функция для работы с данными формы
 function authHandler(e) {
@@ -2650,8 +2649,12 @@ function openCommentsModal() {
         
       <div class="${_commentsCss.comment__container}">
         <span class="${_commentsCss.comment__span}">Оставить комментарий</span>
-        <form class="${_commentsCss.comment__form}" id="auth-form">
-          <div class="${_commentsCss.comment__area}">
+        <form class="comment-form ${_commentsCss.comment__form}" id="comment-form">
+          <div class="${_commentsCss.comment__input}">
+            <input  type="text" id="name" required>
+            <label for="name" class="${_commentsCss.comment__label}">ФИО</label>
+          </div>
+          <div class="textarea ${_commentsCss.comment__area}">
             <textarea  
             id="comment-area"
             rows="10"
@@ -2659,7 +2662,7 @@ function openCommentsModal() {
             required
             placeholder="Comment..."></textarea>
           </div>
-         <button type="submit" class="${_commentsCss.comment__submit}">Отправить</button>
+         <button type="submit" class="commentSubmit ${_commentsCss.comment__submit}">Отправить</button>
         </form>
       </div>
         <button class="btn btn-contain ${_commentsCss.comment__btn}" 
@@ -2669,8 +2672,66 @@ function openCommentsModal() {
     `;
     _root.ROOT_MODAL.innerHTML = html;
 }
+//функция для работы с локалсторадж
+function getCommentFromStorage() {
+    return JSON.parse(localStorage.getItem("comments") || "[]");
+}
+//функция для работы с локалсторадж
+function putCommentToStorage(comment) {
+    const comments = getCommentFromStorage();
+    comments.push(comment);
+    localStorage.setItem("comments", JSON.stringify(comments));
+}
+//функция для запроса комментария в базу данных
+function fetchComment(comment) {
+    return fetch("https://sculpture-page-default-rtdb.firebaseio.com/sculpturecomments.json", {
+        method: "POST",
+        body: JSON.stringify(comment),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then((response)=>response.json
+    ).then((response)=>{
+        comment.id = response.name;
+        return comment;
+    }).then(putCommentToStorage);
+}
+//функция валидации данных
+function isValid(value) {
+    return value.length >= 5;
+}
+function commentHandler(e) {
+    e.preventDefault();
+    const area = document.querySelector("#comment-area");
+    const name = document.querySelector("#name");
+    const btn = document.querySelector(".commentSubmit");
+    if (isValid(area.value)) {
+        const comment = {
+            name: name.value.trim(),
+            comment: area.value.trim(),
+            date: new Date().toJSON()
+        };
+        btn.disabled = true;
+        fetchComment(comment).then(()=>{
+            area.value = "";
+            name.value = "";
+            btn.disabled = false;
+        });
+    }
+}
+//функция рендеринга окна комментариев
+function renderCommentModal() {
+    openCommentsModal();
+    document.getElementById("comment-form").addEventListener("submit", commentHandler);
+}
 //класс для работы с комментариями
 class Comments {
+    listener() {
+        const com = document.getElementById("comment");
+        com.addEventListener("click", ()=>{
+            renderCommentModal();
+        });
+    }
 }
 exports.default = new Comments();
 
@@ -2680,6 +2741,8 @@ module.exports["comment__container"] = "_comment__container_d97a65";
 module.exports["comment__span"] = "_comment__span_d97a65";
 module.exports["comment__submit"] = "_comment__submit_d97a65";
 module.exports["comment__btn"] = "_comment__btn_d97a65";
+module.exports["comment_label"] = "_comment_label_d97a65";
+module.exports["comment__input"] = "_comment__input_d97a65";
 
 },{}]},["gUsm1","iKUBW"], "iKUBW", "parcelRequire8c80")
 
