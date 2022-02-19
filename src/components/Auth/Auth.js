@@ -2,7 +2,7 @@ import * as classes from "./Auth.css";
 
 import { ROOT_MODAL } from "../../../constants/root";
 import closeWhite from "../Images/icons8-удалить.svg";
-import { openCommentsModal } from "../Comments/Comments";
+import Comments, { openCommentsModal } from "../Comments/Comments";
 
 //компонент для работы с авторизацией
 
@@ -104,8 +104,8 @@ function openAfterEnterModal(idToken) {
     <div class="${classes.auth__wrapper}">
       <div class="${classes.auth__postmodal}">
        <span class="${classes.auth__postenter}">Вы выполнили вход как авторизованный пользователь</span>
-       <span class="${classes.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога</span>
-       <span class="spanComment ${classes.auth__postsubmit}">Оставить комментарий</span>
+       <span class="${classes.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога в разделе "Комментарии"</span>
+       
       </div>
       <button class="btn btn-contain ${classes.auth__btn}" 
       onclick = "modal.innerHTML = ''"
@@ -138,19 +138,16 @@ function enterHandler(e) {
   e.preventDefault();
   const email = e.target.querySelector("#email").value;
   const password = e.target.querySelector("#password").value;
-  const btn = e.target.querySelector("#btn");
 
-  btn.disabled = true;
-
-  enterEmailAndPassword(email, password)
-    .then((idToken) => openAfterEnterModal(idToken))
-    .then(() => {
-      const element = document.querySelector(".spanComment");
-      element.addEventListener("click", () => {
-        openCommentsModal();
-      });
-    })
-    .then(() => (btn.disabled = false));
+  enterEmailAndPassword(email, password).then((idToken) =>
+    openAfterEnterModal(idToken)
+  );
+  // .then(() => {
+  //   const element = document.querySelector(".spanComment");
+  //   element.addEventListener("click", () => {
+  //     openCommentsModal();
+  //   });
+  // })
 }
 //функция для работы с данными формы
 function authHandler(e) {
