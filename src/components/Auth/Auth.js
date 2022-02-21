@@ -2,7 +2,11 @@ import * as classes from "./Auth.css";
 
 import { ROOT_MODAL } from "../../../constants/root";
 import closeWhite from "../Images/icons8-удалить.svg";
-import Comments, { openCommentsModal } from "../Comments/Comments";
+import Comments, {
+  activateModal,
+  getComments,
+  openCommentsModal,
+} from "../Comments/Comments";
 
 //компонент для работы с авторизацией
 
@@ -44,7 +48,7 @@ export function openAuthEnter() {
   const html = `
       <div class="${classes.auth__wrapper}" >
         <div class="${classes.auth__container}">
-        <span class="${classes.auth__span}">ВХОД</span>
+        <span class="${classes.auth__span}">Войди и увидишь список комментариев</span>
          <form class="${classes.enter__form}" id="enter-form">
           <div class="${classes.auth__input}">
            <input  type="email" id="email" required>
@@ -117,6 +121,10 @@ function openAfterEnterModal(idToken) {
   console.log(idToken);
 }
 
+function openCommentsAfterEnter(content) {
+  activateModal(Comments.render(content));
+}
+
 //рендеринг модального окна поставторизации
 function openAfterAuthModal(localId) {
   const html = `
@@ -139,9 +147,9 @@ function enterHandler(e) {
   const email = e.target.querySelector("#email").value;
   const password = e.target.querySelector("#password").value;
 
-  enterEmailAndPassword(email, password).then((idToken) =>
-    openAfterEnterModal(idToken)
-  );
+  enterEmailAndPassword(email, password)
+    .then(() => getComments())
+    .then(openCommentsAfterEnter);
   // .then(() => {
   //   const element = document.querySelector(".spanComment");
   //   element.addEventListener("click", () => {
