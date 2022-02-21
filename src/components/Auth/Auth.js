@@ -102,24 +102,6 @@ function enterEmailAndPassword(email, password) {
     .then((response) => response.json())
     .then((data) => data.idToken);
 }
-//рендеринг модального окна после входа
-function openAfterEnterModal(idToken) {
-  const html = `
-    <div class="${classes.auth__wrapper}">
-      <div class="${classes.auth__postmodal}">
-       <span class="${classes.auth__postenter}">Вы выполнили вход как авторизованный пользователь</span>
-       <span class="${classes.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога в разделе "Комментарии"</span>
-       
-      </div>
-      <button class="btn btn-contain ${classes.auth__btn}" 
-      onclick = "modal.innerHTML = ''"
-      style="background-image: url(${closeWhite})"></button>
-    </div>
-  
-  `;
-  ROOT_MODAL.innerHTML = html;
-  console.log(idToken);
-}
 
 function openCommentsAfterEnter(content) {
   activateModal(Comments.render(content));
@@ -182,18 +164,6 @@ function renderOpenModal() {
     .getElementById("enter-form")
     .addEventListener("submit", enterHandler);
 }
-
-// export function activateModal(title, content) {
-//   const html = `
-//           <div class="modal__title">${title}</div>
-//           <div class="modal__content">${content}</div>
-//       `;
-//   ROOT_MODAL.innerHTML = html;
-// }
-
-// export function renderAuthModal() {
-//   activateModal("АВТОРИЗАЦИЯ", openAuthModal());
-// }
 
 class Auth {
   authListener() {

@@ -11,6 +11,7 @@ class Header {
                   <span id="auth" class=" ${classes.header__item}" data-id="auth">Регистрация</span>
                   <span id="enter"class="${classes.header__item}" data-id="enter">Войти</span>
                   <span id="comment"class="${classes.header__item}" data-id="comment">Комментарии</span>
+                  
                 </div>
         </div>
       

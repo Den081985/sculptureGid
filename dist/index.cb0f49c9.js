@@ -2404,6 +2404,7 @@ class Header {
                   <span id="auth" class=" ${_headerCss.header__item}" data-id="auth">Регистрация</span>
                   <span id="enter"class="${_headerCss.header__item}" data-id="enter">Войти</span>
                   <span id="comment"class="${_headerCss.header__item}" data-id="comment">Комментарии</span>
+                  
                 </div>
         </div>
       
@@ -2471,7 +2472,7 @@ function openAuthEnter() {
     const html = `
       <div class="${_authCss.auth__wrapper}" >
         <div class="${_authCss.auth__container}">
-        <span class="${_authCss.auth__span}">ВХОД</span>
+        <span class="${_authCss.auth__span}">Войди и увидишь список комментариев</span>
          <form class="${_authCss.enter__form}" id="enter-form">
           <div class="${_authCss.auth__input}">
            <input  type="email" id="email" required>
@@ -2543,6 +2544,9 @@ function openAfterEnterModal(idToken) {
     _root.ROOT_MODAL.innerHTML = html;
     console.log(idToken);
 }
+function openCommentsAfterEnter(content) {
+    _comments.activateModal(_commentsDefault.default.render(content));
+}
 //рендеринг модального окна поставторизации
 function openAfterAuthModal(localId) {
     const html = `
@@ -2564,8 +2568,8 @@ function enterHandler(e) {
     e.preventDefault();
     const email = e.target.querySelector("#email").value;
     const password = e.target.querySelector("#password").value;
-    enterEmailAndPassword(email, password).then((idToken)=>openAfterEnterModal(idToken)
-    );
+    enterEmailAndPassword(email, password).then(()=>_comments.getComments()
+    ).then(openCommentsAfterEnter);
 // .then(() => {
 //   const element = document.querySelector(".spanComment");
 //   element.addEventListener("click", () => {
@@ -2638,6 +2642,11 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "openCommentsModal", ()=>openCommentsModal
 );
+//функция для получения комментариев из базы данных
+parcelHelpers.export(exports, "getComments", ()=>getComments
+);
+parcelHelpers.export(exports, "activateModal", ()=>activateModal
+);
 //компонент для работы с комментариями
 var _root = require("../../../constants/root");
 var _commentsCss = require("./Comments.css");
@@ -2664,6 +2673,7 @@ function openCommentsModal() {
           </div>
          <button type="submit" class="commentSubmit ${_commentsCss.comment__submit}">Отправить</button>
         </form>
+        
       </div>
         <button class="btn btn-contain ${_commentsCss.comment__btn}" 
         onclick = "modal.innerHTML = ''"
@@ -2682,6 +2692,20 @@ function putCommentToStorage(comment) {
     comments.push(comment);
     localStorage.setItem("comments", JSON.stringify(comments));
 }
+//функция рендеринга модального окна комментария
+function renderComment(comment) {
+    return `
+    
+    <div class="${_commentsCss.comment__name}">${comment.name}</div>
+    <div class="${_commentsCss.comment__date}">
+    ${new Date(comment.date).toLocaleString()}
+    ${new Date(comment.date).toLocaleTimeString()}
+    </div>
+    <div class="${_commentsCss.comment__body}">"${comment.comment}"</div>
+   
+  `;
+}
+//функция рендеринга комментариев
 //функция для запроса комментария в базу данных
 function fetchComment(comment) {
     return fetch("https://sculpture-page-default-rtdb.firebaseio.com/sculpturecomments.json", {
@@ -2696,6 +2720,27 @@ function fetchComment(comment) {
         return comment;
     }).then(putCommentToStorage);
 }
+function getComments() {
+    return fetch(`https://sculpture-page-default-rtdb.firebaseio.com/sculpturecomments.json`).then((response)=>response.json()
+    ).then((content)=>{
+        return content ? Object.keys(content).map((key)=>({
+                ...content[key],
+                id: key
+            })
+        ) : [];
+    });
+}
+function activateModal(content) {
+    const html = `
+    <div  class="${_commentsCss.comment__wrapper}">
+      <div class="${_commentsCss.comment__container}">${content}</div>
+      <button class="btn btn-contain ${_commentsCss.comment__btn}" 
+        onclick = "modal.innerHTML = ''"
+        style="background-image: url(${_icons8удалитьSvgDefault.default})"></button>
+    </div>
+  `;
+    _root.ROOT_MODAL.innerHTML = html;
+}
 //функция валидации данных
 function isValid(value) {
     return value.length >= 5;
@@ -2705,6 +2750,7 @@ function commentHandler(e) {
     const area = document.querySelector("#comment-area");
     const name = document.querySelector("#name");
     const btn = document.querySelector(".commentSubmit");
+    const modal = document.querySelector("#modal");
     if (isValid(area.value)) {
         const comment = {
             name: name.value.trim(),
@@ -2715,6 +2761,7 @@ function commentHandler(e) {
         fetchComment(comment).then(()=>{
             area.value = "";
             name.value = "";
+            modal.innerHTML = "";
             btn.disabled = false;
         });
     }
@@ -2732,6 +2779,10 @@ class Comments {
             renderCommentModal();
         });
     }
+    render(comments) {
+        return comments ? `<ul class="${_commentsCss.cpmment__list}">${comments.map((comment)=>`<li class="${_commentsCss.commet__li}">${renderComment(comment)}</li>`
+        ).join("")}</ul>` : "<p>КОММЕНТАРИЕВ НЕТ</p>";
+    }
 }
 exports.default = new Comments();
 
@@ -2743,6 +2794,10 @@ module.exports["comment__submit"] = "_comment__submit_d97a65";
 module.exports["comment__btn"] = "_comment__btn_d97a65";
 module.exports["comment_label"] = "_comment_label_d97a65";
 module.exports["comment__input"] = "_comment__input_d97a65";
+module.exports["comment__name"] = "_comment__name_d97a65";
+module.exports["comment__date"] = "_comment__date_d97a65";
+module.exports["comment__body"] = "_comment__body_d97a65";
+module.exports["comment__button"] = "_comment__button_d97a65";
 
 },{}]},["gUsm1","iKUBW"], "iKUBW", "parcelRequire8c80")
 

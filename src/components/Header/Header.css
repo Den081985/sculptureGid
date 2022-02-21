@@ -24,7 +24,7 @@
 .header__item {
   color: var(--color-white);
   font-family: "Marck Script", cursive;
-  font-size: 25px;
+  font-size: 22px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
