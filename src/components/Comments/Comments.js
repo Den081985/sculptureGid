@@ -23,6 +23,7 @@ export function openCommentsModal() {
           </div>
          <button type="submit" class="commentSubmit ${classes.comment__submit}">Отправить</button>
         </form>
+        
       </div>
         <button class="btn btn-contain ${classes.comment__btn}" 
         onclick = "modal.innerHTML = ''"
@@ -42,6 +43,21 @@ function putCommentToStorage(comment) {
   comments.push(comment);
   localStorage.setItem("comments", JSON.stringify(comments));
 }
+//функция рендеринга модального окна комментария
+function renderComment(comment) {
+  return `
+    
+    <div class="${classes.comment__name}">${comment.name}</div>
+    <div class="${classes.comment__date}">
+    ${new Date(comment.date).toLocaleString()}
+    ${new Date(comment.date).toLocaleTimeString()}
+    </div>
+    <div class="${classes.comment__body}">"${comment.comment}"</div>
+   
+  `;
+}
+//функция рендеринга комментариев
+
 //функция для запроса комментария в базу данных
 function fetchComment(comment) {
   return fetch(
@@ -61,6 +77,34 @@ function fetchComment(comment) {
     })
     .then(putCommentToStorage);
 }
+//функция для получения комментариев из базы данных
+export function getComments() {
+  return fetch(
+    `https://sculpture-page-default-rtdb.firebaseio.com/sculpturecomments.json`
+  )
+    .then((response) => response.json())
+
+    .then((content) => {
+      return content
+        ? Object.keys(content).map((key) => ({
+            ...content[key],
+            id: key,
+          }))
+        : [];
+    });
+}
+
+export function activateModal(content) {
+  const html = `
+    <div  class="${classes.comment__wrapper}">
+      <div class="${classes.comment__container}">${content}</div>
+      <button class="btn btn-contain ${classes.comment__btn}" 
+        onclick = "modal.innerHTML = ''"
+        style="background-image: url(${closeWhite})"></button>
+    </div>
+  `;
+  ROOT_MODAL.innerHTML = html;
+}
 
 //функция валидации данных
 function isValid(value) {
@@ -73,7 +117,7 @@ function commentHandler(e) {
   const area = document.querySelector("#comment-area");
   const name = document.querySelector("#name");
   const btn = document.querySelector(".commentSubmit");
-
+  const modal = document.querySelector("#modal");
   if (isValid(area.value)) {
     const comment = {
       name: name.value.trim(),
@@ -86,10 +130,12 @@ function commentHandler(e) {
     fetchComment(comment).then(() => {
       area.value = "";
       name.value = "";
+      modal.innerHTML = "";
       btn.disabled = false;
     });
   }
 }
+
 //функция рендеринга окна комментариев
 function renderCommentModal() {
   openCommentsModal();
@@ -105,6 +151,16 @@ class Comments {
     com.addEventListener("click", () => {
       renderCommentModal();
     });
+  }
+  render(comments) {
+    return comments
+      ? `<ul class="${classes.cpmment__list}">${comments
+          .map(
+            (comment) =>
+              `<li class="${classes.commet__li}">${renderComment(comment)}</li>`
+          )
+          .join("")}</ul>`
+      : "<p>КОММЕНТАРИЕВ НЕТ</p>";
   }
 }
 
