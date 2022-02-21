@@ -3,3 +3,7 @@ package-lock.json
 .postcssrc
 
 /.parcel-cache
+firebase.json
+.firebaserc
+.firebase
+/dist

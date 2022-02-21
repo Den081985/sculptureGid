@@ -531,63 +531,63 @@ class Sculpture {
             const id = element.getAttribute("data-id");
             element.addEventListener("click", async ()=>{
                 if (id === "el1") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/8bs9");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/6j4h");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/8bs9");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/6j4h");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el2") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/da0x");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/3qtd");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/da0x");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/3qtd");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el3") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/bs0h");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/alq9");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/bs0h");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/alq9");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el4") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/bzq9");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/4u61");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/bzq9");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/4u61");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el5") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/fg19");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/9c7d");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/fg19");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/9c7d");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el6") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/989p");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/g749");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/989p");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/g749");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el7") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/7atp");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/9zcp");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/7atp");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/9zcp");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el8") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/ig25");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/gmjt");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/ig25");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/gmjt");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el9") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/3nnh");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/j755");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/3nnh");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/j755");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el10") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/cnq5");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/4n81");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/cnq5");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/4n81");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el11") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/8lw5");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/hpwh");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/8lw5");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/hpwh");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 } else if (id === "el12") {
-                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/d3xh");
-                    const { describe  } = await _getDataApi.getDataApi.getData("http://myjson.dit.upm.es/api/bins/g069");
+                    const { place , year , sculptureName , img  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/d3xh");
+                    const { describe  } = await _getDataApi.getDataApi.getData("https://myjson.dit.upm.es/api/bins/g069");
                     _descriptionDefault.default.render(place, year, sculptureName, img);
                     _descriptionDefault.default.eventListener(describe);
                 }
@@ -602,7 +602,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "URL", ()=>URL
 );
-const URL = "http://myjson.dit.upm.es/api/bins/dlll";
+const URL = "https://myjson.dit.upm.es/api/bins/dlll";
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}],"ciiiV":[function(require,module,exports) {
 exports.interopDefault = function(a) {
@@ -2526,24 +2526,6 @@ function enterEmailAndPassword(email, password) {
     ).then((data)=>data.idToken
     );
 }
-//рендеринг модального окна после входа
-function openAfterEnterModal(idToken) {
-    const html = `
-    <div class="${_authCss.auth__wrapper}">
-      <div class="${_authCss.auth__postmodal}">
-       <span class="${_authCss.auth__postenter}">Вы выполнили вход как авторизованный пользователь</span>
-       <span class="${_authCss.auth__postenter}">Оставьте комментарий о городской скульптуре Таганрога в разделе "Комментарии"</span>
-       
-      </div>
-      <button class="btn btn-contain ${_authCss.auth__btn}" 
-      onclick = "modal.innerHTML = ''"
-      style="background-image: url(${_icons8удалитьSvgDefault.default})"></button>
-    </div>
-  
-  `;
-    _root.ROOT_MODAL.innerHTML = html;
-    console.log(idToken);
-}
 function openCommentsAfterEnter(content) {
     _comments.activateModal(_commentsDefault.default.render(content));
 }
@@ -2598,16 +2580,6 @@ function renderOpenModal() {
     openAuthEnter();
     document.getElementById("enter-form").addEventListener("submit", enterHandler);
 }
-// export function activateModal(title, content) {
-//   const html = `
-//           <div class="modal__title">${title}</div>
-//           <div class="modal__content">${content}</div>
-//       `;
-//   ROOT_MODAL.innerHTML = html;
-// }
-// export function renderAuthModal() {
-//   activateModal("АВТОРИЗАЦИЯ", openAuthModal());
-// }
 class Auth {
     authListener() {
         const element = document.getElementById("auth");
@@ -2780,7 +2752,7 @@ class Comments {
         });
     }
     render(comments) {
-        return comments ? `<ul class="${_commentsCss.cpmment__list}">${comments.map((comment)=>`<li class="${_commentsCss.commet__li}">${renderComment(comment)}</li>`
+        return comments ? `<ul>${comments.map((comment)=>`<li>${renderComment(comment)}</li>`
         ).join("")}</ul>` : "<p>КОММЕНТАРИЕВ НЕТ</p>";
     }
 }
