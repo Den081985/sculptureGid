@@ -154,11 +154,8 @@ class Comments {
   }
   render(comments) {
     return comments
-      ? `<ul class="${classes.cpmment__list}">${comments
-          .map(
-            (comment) =>
-              `<li class="${classes.commet__li}">${renderComment(comment)}</li>`
-          )
+      ? `<ul>${comments
+          .map((comment) => `<li>${renderComment(comment)}</li>`)
           .join("")}</ul>`
       : "<p>КОММЕНТАРИЕВ НЕТ</p>";
   }
